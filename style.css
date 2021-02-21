@@ -325,4 +325,7 @@ main {
   .person-details span {
     font-size: 1em;
   }
+  .no-review {
+    font-size: 1.5em;
+  }
 }
