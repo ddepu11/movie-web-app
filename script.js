@@ -18,25 +18,47 @@ let reviewBtn;
 
 // Showing movies in DOM
 const showMoviesInDOM = (movies) => {
+  // reviewsDiv.classList.remove("show");
+  // reviewsDiv.classList.add("hide");
+  // hero.classList.remove("hide");
+  // hero.classList.add("show");
+
+  reviewsDiv.style.height = "0px";
+  hero.style.height = "auto";
+
   hero.innerHTML = "";
   movies.forEach((movie) => {
     const div = document.createElement("div");
     div.classList.add("movie");
+    div.classList.add("container");
+
+    const {
+      poster_path,
+      title,
+      release_date,
+      vote_average,
+      overview,
+      id,
+      name,
+      first_air_date,
+    } = movie;
     const data = `
     <div class="poster">
-      <img src="${posterURL}${movie.poster_path}" />
+      <img src="${posterURL}${poster_path}" />
 
       <div class="title">
-        <h3>${movie.title}</h3>
+        <h3>${title ? title : name}</h3>
       </div>
     
     </div>
     <div class="info ">
-      <h2>${movie.title}</h2>
-      <p class="date"><strong>Releasing:</strong> ${movie.release_date}</p>
-      <p class="vote"><strong>ImDB Rating:</strong> ${movie.vote_average}</p>
-      <p><strong>Overview:</strong> ${movie.overview}</p>
-      <button class="review-btn" data-movieId="${movie.id}">Show Reviews</button>
+      <h2>${title ? title : name}</h2>
+      <p class="date"><strong>Releasing:</strong> ${
+        release_date ? release_date : first_air_date
+      }</p>
+      <p class="vote"><strong>ImDB Rating:</strong> ${vote_average}</p>
+      <p><strong>Overview:</strong> ${overview}</p>
+      <button class="review-btn" data-movieId="${id}">Show Reviews</button>
     </div>
     `;
     div.innerHTML = data;
@@ -48,10 +70,13 @@ const showMoviesInDOM = (movies) => {
 
 // Fetching movies
 const getMovies = async (moviesURL) => {
-  const res = await fetch(moviesURL);
-  const data = await res.json();
-
-  // console.log(data);
+  let res, data;
+  try {
+    res = await fetch(moviesURL);
+    data = await res.json();
+  } catch (err) {
+    console.log("%$$%$%$%$%$ ::: " + err);
+  }
   showMoviesInDOM(data.results);
 };
 
@@ -92,23 +117,50 @@ function fetchReviews(reviewBtns, movies) {
 
 // Showing reviews in DOM
 function showReviewsInDOM(reviews, movie) {
+  hero.classList.remove("show");
   hero.classList.add("hide");
+
+  reviewsDiv.classList.remove("hide");
+  reviewsDiv.classList.add("show");
+
+  reviewsDiv.style.height = "auto";
+  hero.style.height = "0px";
+
+  reviewsDiv.innerHTML = "";
+
   const div = document.createElement("div");
   div.classList.add("movie-details");
-  const poster = `${posterURL}${movie.poster_path}`;
+
+  const {
+    poster_path,
+    title,
+    release_date,
+    vote_average,
+    overview,
+    id,
+    name,
+    first_air_date,
+  } = movie;
+  const poster = `${posterURL}${poster_path}`;
 
   let data = `
     <aside>
-      <img src="${poster}" alt="${movie.title}"/>
+      <img src="${poster}" alt="${title ? title : name}"/>
     </aside>
     <section class="details-section">
-      <h2>${movie.title}</h2>
-      <p><strong>Releasing:</strong> ${movie.release_date}</p>
-      <p><strong>ImDB Rating:</strong> ${movie.vote_average}</p>
-      <p><strong>Overview:</strong> ${movie.overview}</p>
+      <h2>${title ? title : name}</h2>
+      <p><strong>Releasing:</strong> ${
+        release_date ? release_date : first_air_date
+      }</p>
+      <p><strong>ImDB Rating:</strong> ${vote_average}</p>
+      <p><strong>Overview:</strong> ${overview}</p>
     </section>
     <main class="all-reviews">
-
+      ${
+        reviews.length !== 0
+          ? ""
+          : " <h1 class='no-review'>Sorry No Review To Show!!!</h1> "
+      }
   `;
 
   reviews.forEach((review) => {
