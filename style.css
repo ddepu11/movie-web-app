@@ -17,7 +17,11 @@ html {
 body {
   font-family: "Roboto", sans-serif;
   line-height: 1.6;
-  background: radial-gradient(var(--clr-secondary), var(--clr-primary));
+  background: linear-gradient(
+    to right,
+    var(--clr-secondary),
+    var(--clr-primary)
+  );
   height: 100vh;
 }
 
