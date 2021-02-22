@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
 
 :root {
-  --clr-primary: #4e083d;
-  --clr-secondary: rgb(228, 154, 197);
+  --clr-primary: #aaaaaa;
+  --clr-secondary: #a4ebf3;
 }
 
 *,
@@ -127,10 +127,10 @@ main {
   color: #444;
 }
 
-.info > p:last-child {
-  margin-top: 20px;
+.info p {
+  margin-top: 8px;
   font-size: 1.1em;
-  line-height: 1.4;
+  line-height: 1.2;
   color: #555;
 }
 
@@ -194,7 +194,7 @@ main {
 .details-section {
   padding: 0px 10px 10px 10px;
   grid-area: d;
-  color: white;
+  color: black;
   letter-spacing: 2px;
 }
 
@@ -234,7 +234,6 @@ main {
 }
 .person-details h2 {
   font-size: 1.3em;
-  color: #eee;
   letter-spacing: 2px;
 }
 .person-details img {
@@ -248,7 +247,7 @@ main {
   font-size: 1.2em;
   font-weight: 700;
   letter-spacing: 1px;
-  color: #111;
+  color: #333;
   margin-bottom: 50px;
 }
 
