@@ -210,28 +210,33 @@ main {
 }
 
 .details-section h2 {
-  font-size: 3.2em;
+  font-size: 2em;
 }
 
 .details-section p:nth-child(2) {
-  font-size: 1.4em;
+  font-size: 1em;
   color: #222;
+  margin-bottom: 10px;
 }
 
 .details-section p:nth-child(3) {
-  font-size: 1.2em;
+  font-size: 1em;
   color: #000;
+  margin-bottom: 10px;
 }
 
 .details-section p:nth-child(4) {
-  font-size: 1.2em;
+  font-size: 0.9em;
   color: #333;
 }
 
 .no-review {
+  margin-top: 20px;
   text-align: center;
-  color: #eee;
+  color: #111;
   font-size: 2.5em;
+  letter-spacing: 4px;
+  text-transform: uppercase;
 }
 
 .all-reviews {
@@ -244,18 +249,18 @@ main {
   margin: 20px 0;
 }
 .person-details h2 {
-  font-size: 1.3em;
+  font-size: 1em;
   letter-spacing: 2px;
 }
 .person-details img {
   border-radius: 50%;
 }
 .person-details span {
-  font-size: 1.1em;
+  font-size: 0.8em;
 }
 
 .review p {
-  font-size: 1.2em;
+  font-size: 0.9em;
   font-weight: 700;
   letter-spacing: 1px;
   color: #333;
